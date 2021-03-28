@@ -1,5 +1,5 @@
-import { MongoHelper } from '../../../../../src/infra/repositories/mongodb/helpers'
-import { AccountMongoRepository } from '../../../../../src/infra/repositories/mongodb/account/account-mongo-repository'
+import { MongoHelper } from '@/infra/repositories/mongodb/helpers'
+import { AccountMongoRepository } from '@/infra/repositories/mongodb/account/account-mongo-repository'
 
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {

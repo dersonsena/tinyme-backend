@@ -1,6 +1,11 @@
-import { EmailValidator, AddAccount, AccountInputBoundary, Account } from '../../../../src/presentation/controllers/signup/contracts'
-import { InvalidParamError, MissingParamError, ServerError } from '../../../../src/presentation/errors'
-import { SignUpController } from '../../../../src/presentation/controllers/signup/signup'
+import {
+  EmailValidator,
+  AddAccount,
+  AccountInputBoundary,
+  Account
+} from '@/presentation/controllers/signup/contracts'
+import { InvalidParamError, MissingParamError, ServerError } from '@/presentation/errors'
+import { SignUpController } from '@/presentation/controllers/signup/signup'
 
 interface SutType {
   sut: SignUpController
@@ -10,7 +15,7 @@ interface SutType {
 
 const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
-    isValid (email: string): boolean {
+    isValid(email: string): boolean {
       return true
     }
   }
@@ -20,7 +25,7 @@ const makeEmailValidator = (): EmailValidator => {
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
-    async add (account: AccountInputBoundary): Promise<Account> {
+    async add(account: AccountInputBoundary): Promise<Account> {
       const fakeAccount = {
         id: 'valid_id',
         name: 'valid_name',
@@ -28,7 +33,7 @@ const makeAddAccount = (): AddAccount => {
         password: 'valid_password'
       }
 
-      return await new Promise(resolve => resolve(fakeAccount))
+      return await new Promise((resolve) => resolve(fakeAccount))
     }
   }
 
@@ -41,7 +46,9 @@ const makeSut = (): SutType => {
   const sut = new SignUpController(emailValidatorStub, addAccountStub)
 
   return {
-    sut, emailValidatorStub, addAccountStub
+    sut,
+    emailValidatorStub,
+    addAccountStub
   }
 }
 
