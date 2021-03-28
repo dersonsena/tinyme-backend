@@ -1,5 +1,6 @@
 {
   "env": {
+    "node": true,
     "jest": true
   },
   "extends": [
@@ -16,6 +17,7 @@
   "parser": "@typescript-eslint/parser",
   "rules": {
     "prettier/prettier": "error",
+    "import/prefer-default-export": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/no-floating-promises": "off"
