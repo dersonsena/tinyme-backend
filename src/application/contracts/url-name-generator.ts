@@ -1,4 +1,4 @@
 export interface UrlNameGenerator {
   urlName: string
-  generate: () => Promise<string>
+  generate: (length?: number) => Promise<string>
 }
