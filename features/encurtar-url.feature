@@ -3,8 +3,8 @@ Funcionalidade: Encurtar uma URL
   Regras:
   - URL tem que ser válida
   - URL não pode ter sido usada anteriormente
-  - (Opcional) Apelido tem que ser válido
-  - (Opcional) Apelido não pode ter sido usado anteriormente
+  - Apelido é opcional, caso informado, dever ser válido
+  - Apelido, caso informado, não pode ter sido usado anteriormente
 
   Cenário: Encurtar uma URL anônima sem apelido
     Dado uma URL grande
