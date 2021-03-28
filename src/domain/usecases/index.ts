@@ -1,1 +1,1 @@
-export * from './add-account'
+export * from './shorten-url'

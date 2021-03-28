@@ -9,7 +9,7 @@ Funcionalidade: Encurtar uma URL
   Cenário: Encurtar uma URL anônima sem apelido
     Dado uma URL grande
     E não informar um apelido para URL
-    Quando for um usuário anonimo
+    Quando for um usuário anônimo
     Então deve retornar uma url curta vinculada a URL grande
 
   Cenário: Encurtar uma URL anônima com apelido
