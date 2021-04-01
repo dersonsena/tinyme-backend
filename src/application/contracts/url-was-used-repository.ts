@@ -1,3 +1,3 @@
 export interface UrlWasUsedRepository {
-  verify: (url: string) => Promise<boolean>
+  urlWasUsed: (url: string) => Promise<boolean>
 }

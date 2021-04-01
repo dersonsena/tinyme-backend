@@ -9,6 +9,7 @@ import {
   UrlWasUsedRepositorySpy
 } from '@/tests/application/mocks'
 import { throwError } from '@/tests/helpers'
+import { UrlStatus } from '@/domain/entities'
 
 type SutTypes = {
   sut: ShortenUrlUseCase
@@ -41,7 +42,7 @@ describe('ShortenUrlUseCase', () => {
 
   it('Should throw an Error if URL already used previously', async () => {
     const { sut, urlWasUsedRepositorySpy } = makeSut()
-    jest.spyOn(urlWasUsedRepositorySpy, 'verify').mockImplementationOnce(throwError)
+    jest.spyOn(urlWasUsedRepositorySpy, 'urlWasUsed').mockImplementationOnce(throwError)
 
     const promise = sut.handle({ longUrl: faker.internet.url() })
 
@@ -60,7 +61,7 @@ describe('ShortenUrlUseCase', () => {
 
   it('Should throw an error if there is an error adding url', async () => {
     const { sut, addUrlRepositorySpy } = makeSut()
-    jest.spyOn(addUrlRepositorySpy, 'add').mockImplementationOnce(throwError)
+    jest.spyOn(addUrlRepositorySpy, 'addUrl').mockImplementationOnce(throwError)
 
     const promise = sut.handle({ longUrl: faker.internet.url() })
 
@@ -70,12 +71,14 @@ describe('ShortenUrlUseCase', () => {
   it('Should returns correct original address', async () => {
     const { sut, urlNameGeneratorSpy } = makeSut()
     const longUrl = faker.internet.url()
-    const outputBoundary = await sut.handle({ longUrl })
+    const url = await sut.handle({ longUrl })
 
-    expect(outputBoundary).toEqual({
+    expect(url).toEqual({
+      id: 1000,
       originalAddress: longUrl,
-      shortenedUrl: `https://tinyme.cc/${urlNameGeneratorSpy.urlName}`,
-      alias: urlNameGeneratorSpy.urlName
+      tinyAddress: `https://tinyme.cc/${urlNameGeneratorSpy.urlName}`,
+      alias: urlNameGeneratorSpy.urlName,
+      status: UrlStatus.ACTIVE
     })
   })
 })

@@ -1,13 +1,9 @@
+import { Url } from '@/domain/entities'
+
 export interface ShortenUrlUseCase {
-  handle: (inputBoundary: ShortenUrlInput) => Promise<ShortenUrlOutput>
+  handle: (inputBoundary: ShortenUrlInput) => Promise<Url>
 }
 
 export type ShortenUrlInput = {
   longUrl: string
-}
-
-export type ShortenUrlOutput = {
-  originalAddress: string
-  shortenedUrl: string
-  alias: string
 }

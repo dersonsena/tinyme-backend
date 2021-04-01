@@ -1,10 +1,11 @@
 import { UrlStatus } from '@/domain/entities'
 
 export interface AddUrlRepository {
-  add: (urlModel: UrlModel) => Promise<boolean>
+  addUrl: (urlModel: UrlModel) => Promise<UrlModel>
 }
 
 export type UrlModel = {
+  id?: string | number
   longUrl: string
   shortenedUrl: string
   alias: string
